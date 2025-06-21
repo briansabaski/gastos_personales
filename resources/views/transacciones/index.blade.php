@@ -14,6 +14,12 @@
         </div>
     @endif
 
+    @if(session('error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <span>{{ session('error') }}</span>
+        </div>
+    @endif
+
     @empty($datos)
         <p class="text-gray-600">No existen transacciones actualmente</p>
     @else
@@ -27,6 +33,7 @@
                         <th class="px-4 py-2 border border-black border-opacity-85">Fecha de transaccion</th>
                         <th class="px-4 py-2 border border-black border-opacity-85">Creado en</th>
                         <th class="px-4 py-2 border border-black border-opacity-85">Actualizado</th>
+                        <th class="px-4 py-2 border border-black border-opacity-85">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +45,16 @@
                         <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['transaction_date'] }}</td>
                         <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['created_at'] }}</td>
                         <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['updated_at'] }}</td>
+                        <td class="px-4 py-2 border border-black border-opacity-85"><a href="{{ route('transacciones.show', $dato['id']) }}" class="text-purple-600 hover:underline">Ver</a>
+                        
+            <a href="{{ route('transacciones.edit', $dato['user_id']) }}" class="text-purple-600 hover:underline">Editar</a>
+                        
+                        <form action=" {{route('transacciones.destroy', $dato['id'])}}" method="POST" onsubmit="return confirm('Estas seguro que deseas eliminar la transaccion')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-purple-600 hover:underline">Eliminar</button>
+                        </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

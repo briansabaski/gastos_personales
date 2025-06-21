@@ -16,6 +16,11 @@
             <a href="{{ route('user.index')}}" class="{{ request()->routeIs('user.index') ? 'font-bold underline ' : 'hover:underline   ' }}">Usuario</a>
         </li>
 
+         <li>
+            <a href="{{ route('comprobantes.index')}}" class="{{ request()->routeIs('comprobantes.index') ? 'font-bold underline ' : 'hover:underline   ' }}">Comprobantes</a>
+        </li>
+
+
     </ul>
 </nav>
 

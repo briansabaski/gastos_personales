@@ -6,10 +6,10 @@
 
 <div class="container mx-auto p-8 max-w-7xl">
     <h1 class="text-3xl font-bold mb-6 text-purple-800">Listado de usuarios</h1>
-    <a href="{{ route('user.create') }}" class="text-purple-600 hover:underline mb-6 inline-block">Crear usuarios</a>
+    <a href="{{ route('user.create') }}" class="text-purple-600 hover:underline mb-6 inline-block">Crear usuario</a>
 
     @if(session('exito'))
-        <div class="bg-purple-100 border border-purple-400 text-purple-700 px-4 py-3 rounded mb-4">
+        <div class="bg-purple-100 border border-purple-400 text-green-700 px-4 py-3 rounded mb-4">
             <span>{{ session('exito') }}</span>
         </div>
     @endif
@@ -43,6 +43,14 @@
                         <td class="px-4 py-2 border border-purple-300">{{ "No" }}</td>
                         <td class="px-4 py-2 border border-purple-300">{{ $dato['created_at'] }}</td>
                         <td class="px-4 py-2 border border-purple-300">{{ $dato['updated_at'] }}</td>
+                        <td class="px-4 py-2 border border-black border-opacity-85"><a href="{{ route('user.show', $dato['user_id']) }}" class="text-purple-600 hover:underline">Ver</a>
+                        <a href="{{ route('user.edit', $dato['user_id']) }}" class="text-purple-600 hover:underline">Editar</a>
+                         <form action=" {{route('user.destroy', $dato['user_id'])}}" method="POST" onsubmit="return confirm('Estas seguro que deseas eliminar el usuario?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-purple-600 hover:underline">Eliminar</button>
+                        </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
