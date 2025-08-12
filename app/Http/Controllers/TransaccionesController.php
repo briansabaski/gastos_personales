@@ -21,7 +21,7 @@ public function __construct()
 
     //Si el archivo transacciones.json no existe, lo crea con un arreglo vacío
     if(!File::exists($this->archivo)){
-        File::put($this->archivo, json_encode([]));
+        File::put($this->archivo, json_encode([])); 
     }
 }
 

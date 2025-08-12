@@ -5,6 +5,7 @@ use App\Http\Controllers\TransaccionesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\ComprobantesController;
+use App\Http\Controllers\CategoriasController;
 
 
 Route::get('/inicio', function () {
@@ -69,6 +70,11 @@ Route::resource('user', UserController::class);
 
 Route::resource('comprobantes', ComprobantesController::class)
 ->except(['show', 'edit', 'update', 'destroy']);
+
+
+
+// Creación de ruta para el examen
+Route::resource('categorias', CategoriasController::class);
 
 
 
