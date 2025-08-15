@@ -7,6 +7,7 @@ use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\ComprobantesController;
 use App\Http\Controllers\CategoriasController;
 use App\Models\Transaccion;
+use App\Models\Usuario;
 
 
 Route::get('/inicio', function () {
@@ -133,9 +134,22 @@ Route::get('/test', function() {
     $transacciones = Transaccion::all();
     dd($transacciones);*/
 
-    $transacciones = Transaccion::withTrashed()  //onlyTrashed (Muestra solo los eliminados)
-    ->where('id', 4)->get();
-    dd($transacciones);
+    // $transacciones = Transaccion::withTrashed()  //onlyTrashed (Muestra solo los eliminados)
+    // ->where('id', 4)->get();
+    // dd($transacciones);
+
+
+
+    // $usuarios = Usuario::create([
+    //     'nombre' => 'Geralt',
+    //     'email' => 'Geralt@gmail.com',
+    //     'password' => 'espadachin123',
+    //     'email_verificado' => now(),
+    //     'rol_id' => 1,
+    //     'remember_token' => 'Si'
+    // ]);
+    // $usuarios = Usuario::all();
+    // dd($usuarios);
 });
 
 

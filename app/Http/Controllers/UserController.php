@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Usuarios;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -26,7 +27,7 @@ public function __construct()
 }
 
     public function index() {
-        $datos = $this->leerUser();
+        $datos = Usuario::all();
         return view('user.index', ['datos'=>$datos]);
     }
 

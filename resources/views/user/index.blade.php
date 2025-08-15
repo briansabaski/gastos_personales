@@ -34,18 +34,18 @@
                 <tbody>
                     @foreach($datos as $dato)
                     <tr class="hover:bg-purple-100">
-                        <td class="px-4 py-2 border border-purple-300">{{ $dato['user_id'] }}</td>
-                        <td class="px-4 py-2 border border-purple-300">{{ $dato['name'] }}</td>
+                        <td class="px-4 py-2 border border-purple-300">{{ $dato['id'] }}</td>
+                        <td class="px-4 py-2 border border-purple-300">{{ $dato['nombre'] }}</td>
                         <td class="px-4 py-2 border border-purple-300">{{ $dato['email'] }}</td>                      
                         <td class="px-4 py-2 border border-purple-300">{{ $dato['password'] }}</td>
-                        <td class="px-4 py-2 border border-purple-300">{{ $dato['email_verified_at'] }}</td>
-                        <td class="px-4 py-2 border border-purple-300">{{ $dato['role_id'] }}</td>
+                        <td class="px-4 py-2 border border-purple-300">{{ $dato['email_verificado'] }}</td>
+                        <td class="px-4 py-2 border border-purple-300">{{ $dato['rol_id'] }}</td>
                         <td class="px-4 py-2 border border-purple-300">{{ "No" }}</td>
                         <td class="px-4 py-2 border border-purple-300">{{ $dato['created_at'] }}</td>
                         <td class="px-4 py-2 border border-purple-300">{{ $dato['updated_at'] }}</td>
-                        <td class="px-4 py-2 border border-black border-opacity-85"><a href="{{ route('user.show', $dato['user_id']) }}" class="text-purple-600 hover:underline">Ver</a>
-                        <a href="{{ route('user.edit', $dato['user_id']) }}" class="text-purple-600 hover:underline">Editar</a>
-                         <form action=" {{route('user.destroy', $dato['user_id'])}}" method="POST" onsubmit="return confirm('Estas seguro que deseas eliminar el usuario?')">
+                        <td class="px-4 py-2 border border-black border-opacity-85"><a href="{{ route('user.show', $dato['id']) }}" class="text-purple-600 hover:underline">Ver</a>
+                        <a href="{{ route('user.edit', $dato['id']) }}" class="text-purple-600 hover:underline">Editar</a>
+                         <form action=" {{route('user.destroy', $dato['id'])}}" method="POST" onsubmit="return confirm('Estas seguro que deseas eliminar el usuario?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-purple-600 hover:underline">Eliminar</button>
