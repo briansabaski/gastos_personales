@@ -27,7 +27,7 @@
             <table class="w-full bg-yellow-100 shadow-md rounded border border-black border-opacity-85 text-left">
                 <thead>
                     <tr class="bg-yellow-200">
-                        <th class="px-4 py-2 border border-black border-opacity-85">Id de usuario</th>
+                        <th class="px-4 py-2 border border-black border-opacity-85">Id de Transaccion</th>
                         <th class="px-4 py-2 border border-black border-opacity-85">Descripcion</th>
                         <th class="px-4 py-2 border border-black border-opacity-85">Monto</th>
                         <th class="px-4 py-2 border border-black border-opacity-85">Fecha de transaccion</th>
@@ -39,15 +39,15 @@
                 <tbody>
                     @foreach($datos as $dato)
                     <tr class="hover:bg-yellow-50">
-                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['user_id'] }}</td>
-                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['description'] }}</td>
-                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['amount'] }}</td>
-                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['transaction_date'] }}</td>
+                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['id'] }}</td>
+                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['descripcion'] }}</td>
+                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['monto'] }}</td>
+                        <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['fecha_transaccion'] }}</td>
                         <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['created_at'] }}</td>
                         <td class="px-4 py-2 border border-black border-opacity-85">{{ $dato['updated_at'] }}</td>
                         <td class="px-4 py-2 border border-black border-opacity-85"><a href="{{ route('transacciones.show', $dato['id']) }}" class="text-purple-600 hover:underline">Ver</a>
                         
-            <a href="{{ route('transacciones.edit', $dato['user_id']) }}" class="text-purple-600 hover:underline">Editar</a>
+            <a href="{{ route('transacciones.edit', $dato['id']) }}" class="text-purple-600 hover:underline">Editar</a>
                         
                         <form action=" {{route('transacciones.destroy', $dato['id'])}}" method="POST" onsubmit="return confirm('Estas seguro que deseas eliminar la transaccion')">
                             @csrf

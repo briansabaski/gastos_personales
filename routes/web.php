@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\ComprobantesController;
 use App\Http\Controllers\CategoriasController;
+use App\Models\Transaccion;
 
 
 Route::get('/inicio', function () {
@@ -76,6 +77,66 @@ Route::resource('comprobantes', ComprobantesController::class)
 // Creación de ruta para el examen
 Route::resource('categorias', CategoriasController::class);
 
+
+Route::get('/test', function() {
+   // $transacciones = SELECT * FROM transacciones; 
+    
+    // $transacciones = Transaccion::all();
+
+    // Obtener un registro de la tabla
+    //$transacciones = Transaccion::find(1);
+    //dd($transacciones);
+    // El registro se busca, si no encuentra falla, se utiliza Transaccion::findOrFail(1)
+
+   // $transaccion = Transaccion::where('id', 1)->get();
+   // dd($transaccion);
+
+   // Permite obtener los id que sean mayores a 1
+    /*$transaccion = Transaccion::where('id', '>=', 1)
+    ->select('descripcion')
+    ->first();
+    dd($transaccion);*/
+
+    //INSERT FORMA LARGA
+    /*
+    $transaccion = new Transaccion();
+    $transaccion->descripcion = 'Pagué Youtube';
+    $transaccion->monto = 54000;
+    $transaccion->fecha_transaccion = date('Y-m-d');
+    $transaccion->save();
+
+    $transacciones = Transaccion::all();
+    dd($transacciones);*/
+
+    //INSERT FORMA CORTA
+/*  Transaccion::create([
+        'descripcion' => 'Compré un juego en Steam',
+        'monto' => 67000,
+        'fecha_transaccion' => date('Y-m-d'),
+    ]);
+
+    $transacciones = Transaccion::all();
+    dd($transacciones);/*
+
+    // UPDATE
+    
+    /*Transaccion::where('id', 4)
+    ->update([
+        'monto' => 24654
+    ]);
+    $transacciones = Transaccion::all();
+    dd($transacciones); */
+
+    // DELETE
+    // Transaccion::destroy(5);
+   /*Transaccion::where('id', '>', 2)->delete();
+    $transacciones = Transaccion::all();
+    dd($transacciones);*/
+
+    $transacciones = Transaccion::withTrashed()  //onlyTrashed (Muestra solo los eliminados)
+    ->where('id', 4)->get();
+    dd($transacciones);
+});
 
 
 

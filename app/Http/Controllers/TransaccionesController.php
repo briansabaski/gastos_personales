@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Transaccion;
 use App\Helpers\Transacciones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -26,7 +26,7 @@ public function __construct()
 }
 
     public function index() {
-        $datos = $this->leerTransacciones();
+        $datos = Transaccion::all();
         return view('transacciones.index', ['datos'=>$datos]);
     }
 
